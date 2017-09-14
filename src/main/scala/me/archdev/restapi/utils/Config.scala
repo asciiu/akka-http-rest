@@ -13,4 +13,6 @@ trait Config {
   val jdbcUrl = databaseConfig.getString("url")
   val dbUser = databaseConfig.getString("user")
   val dbPassword = databaseConfig.getString("password")
+
+  val bittrex = config.getConfig("bittrex")
 }

@@ -5,7 +5,7 @@ import akka.event.{Logging, LoggingAdapter}
 import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
 import me.archdev.restapi.http.HttpService
-import me.archdev.restapi.services.{AuthService, UsersService}
+import me.archdev.restapi.services.{AuthService, BittrexWebsocketService, UsersService}
 import me.archdev.restapi.utils.{Config, DatabaseService, FlywayService}
 
 import scala.concurrent.ExecutionContext
@@ -25,6 +25,8 @@ object Main extends App with Config {
   val authService = new AuthService(databaseService)(usersService)
 
   val httpService = new HttpService(usersService, authService)
+
+  val bittrexService = new BittrexWebsocketService(databaseService)
 
   Http().bindAndHandle(httpService.routes, httpHost, httpPort)
 }
