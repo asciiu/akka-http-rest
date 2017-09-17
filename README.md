@@ -1,6 +1,11 @@
 Akka Slick REST service template
 =========================
 
+This was forked from archdev. You started using this as a starting point for the bittrex semi automated system.
+Refer to services/BittrexWebsocketService. This was the original method to receive forwarded message from
+your node.js bittrex server.
+
+Original Notes:
 [![Build Status](https://travis-ci.org/ArchDev/akka-http-rest.svg?branch=master)](https://travis-ci.org/ArchDev/akka-http-rest)
 
 Goal of example is to show how create reactive REST services on Typesafe stack with Akka and Slick.
