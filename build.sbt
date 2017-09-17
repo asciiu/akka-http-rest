@@ -1,7 +1,7 @@
 name := "akka-http-rest"
 organization := "me.archdev"
 version := "1.0.0"
-scalaVersion := "2.12.3"
+scalaVersion := "2.12.2"
 
 libraryDependencies ++= {
   val akkaV = "10.0.10"
@@ -11,6 +11,10 @@ libraryDependencies ++= {
   Seq(
     "com.typesafe.akka" %% "akka-http-core" % akkaV,
     "com.typesafe.akka" %% "akka-http" % akkaV,
+
+    "com.typesafe.akka" %% "akka-stream" % "2.5.4",
+    "com.typesafe.akka" %% "akka-actor"  % "2.5.4",
+
     "de.heikoseeberger" %% "akka-http-circe" % "1.18.0",
 
     "com.typesafe.slick" %% "slick" % slickVersion,
@@ -26,7 +30,12 @@ libraryDependencies ++= {
 
     "org.scalatest" %% "scalatest" % scalaTestV % "test",
     "com.typesafe.akka" %% "akka-http-testkit" % akkaV % "test",
-    "ru.yandex.qatools.embed" % "postgresql-embedded" % "2.4" % "test"
+    "ru.yandex.qatools.embed" % "postgresql-embedded" % "2.4" % "test",
+
+    "com.softwaremill.akka-http-session" %% "core" % "0.5.2",
+    "com.softwaremill.akka-http-session" %% "jwt"  % "0.5.2",
+    "ch.qos.logback" % "logback-classic" % "1.1.7",
+    "com.typesafe.scala-logging" %% "scala-logging" % "3.5.0"
   )
 }
 

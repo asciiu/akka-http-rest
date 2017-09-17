@@ -2,6 +2,7 @@ package me.archdev.restapi.http.routes
 
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Directives._
+import akka.http.scaladsl.server.directives.Credentials
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
 import me.archdev.restapi.http.SecurityDirectives
 import me.archdev.restapi.models.UserEntity
@@ -9,7 +10,7 @@ import me.archdev.restapi.services.AuthService
 import io.circe.generic.auto._
 import io.circe.syntax._
 
-import scala.concurrent.ExecutionContext
+import scala.concurrent.{ExecutionContext, Future}
 
 class AuthServiceRoute(val authService: AuthService)(implicit executionContext: ExecutionContext) extends FailFastCirceSupport with SecurityDirectives {
 

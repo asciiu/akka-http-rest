@@ -1,5 +1,6 @@
 package me.archdev.restapi.services
 
+import akka.http.scaladsl.server.directives.Credentials
 import me.archdev.restapi.models.db.TokenEntityTable
 import me.archdev.restapi.models.{TokenEntity, UserEntity}
 import me.archdev.restapi.utils.DatabaseService
@@ -16,7 +17,7 @@ class AuthService(val databaseService: DatabaseService)(usersService: UsersServi
       users.find(user => user.password == password) match {
         case Some(user) => db.run(tokens.filter(_.userId === user.id).result.headOption).flatMap {
           case Some(token) => Future.successful(Some(token))
-          case None        => createToken(user).map(token => Some(token))
+          case None => createToken(user).map(token => Some(token))
         }
         case None => Future.successful(None)
       }
